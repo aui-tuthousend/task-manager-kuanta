@@ -26,7 +26,7 @@
                 <td class="align-middle">{{$task->created_at}}</td>
                 <td class="align-middle">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href='/detailtask' class="btn btn-primary">details</a>
+                        <a href="{{route('detail', $task->id)}}" class="btn btn-primary">details</a>
 {{--                        <button type="button" class="btn btn-primary">Middle</button>--}}
 {{--                        <button type="button" class="btn btn-primary">Right</button>--}}
                     </div>

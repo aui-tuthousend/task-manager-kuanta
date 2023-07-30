@@ -10,6 +10,7 @@ class Task extends Model
     use HasFactory;
     protected $fillable = [
         'judul',
+        'deskripsi',
         'created_by',
     ];
 
@@ -18,7 +19,7 @@ class Task extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function subtasksFromTask(){
-        return $this->hasMany(SubTask::class);
+    public function subtasks(){
+        return $this->hasMany(SubTask::class, 'id_task');
     }
 }

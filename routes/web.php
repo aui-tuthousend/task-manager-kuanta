@@ -30,10 +30,14 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'admin'])->middleware('userAcces');
     Route::get('/team', [\App\Http\Controllers\AdminController::class, 'team'])->middleware('adminAcces');
     Route::get('/team', [\App\Http\Controllers\TaskController::class, 'index'])->middleware('adminAcces');
-    Route::get('/detailtask', [\App\Http\Controllers\TaskController::class, 'detail'])->middleware('adminAcces');
-    Route::get('/addtask', [\App\Http\Controllers\TaskController::class, 'create'])->middleware('adminAcces');
-    Route::get('/addtask/addsubtask', [\App\Http\Controllers\SubTaskController::class, 'create'])->middleware('adminAcces');
-    Route::get('/addtask/addsubtask', [\App\Http\Controllers\UserController::class, 'index'])->middleware('adminAcces');
-    Route::get('/addtask', [\App\Http\Controllers\SubTaskController::class, 'index'])->middleware('adminAcces');
+
+
+    Route::get('/addtask', [\App\Http\Controllers\TaskController::class, 'create']);
+    route::post('/addtask', [\App\Http\Controllers\TaskController::class, 'store'])->name('addtask');
+    Route::get('/addtask/addsubtask', [\App\Http\Controllers\SubTaskController::class, 'create']);
+    Route::post('/addtask/addsubtask', [\App\Http\Controllers\SubTaskController::class, 'store'])->name('addsubtask');
+    Route::get('/addtask/addsubtask', [\App\Http\Controllers\UserController::class, 'index']);
+    Route::get('/addtask', [\App\Http\Controllers\SubTaskController::class, 'index']);
+    Route::get('/detailtask/{idtask}', [\App\Http\Controllers\TaskController::class, 'show'])->name('detail');
     Route::get('/logout', [\App\Http\Controllers\SesiController::class, 'logout']);
 });

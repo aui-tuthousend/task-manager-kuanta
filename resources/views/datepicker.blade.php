@@ -10,7 +10,7 @@
     <script>
         $( function() {
             $( "#datepicker" ).datepicker({
-                dateFormat: "dd-mm-yy",
+                dateFormat: "dd-mm-yy H:i",
                 changeMonth: true,
                 changeYear: true,
                 buttonText:"date"
@@ -43,9 +43,9 @@
             <label for="Form2">Deskripsi SubTask</label>
             <textarea class="form-control" id="Form2" name="deskripsi" rows="2"></textarea>
         </div>
-        <label for="datepicker">Deadline</label>
-        <br/>
-        <input type="text" name="deadline" id="datepicker">
+            <label for="datepicker">Deadline</label>
+            <br/>
+            <input type="text" name="deadline" id="datepicker">
 
         <br/>
         <br/>

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('created_by');
             $table->timestamp('picked_at')->nullable();
             $table->timestamp('done_at')->nullable();
-            $table->integer('deadline');
+            $table->timestamp('deadline')->nullable();
             $table->timestamps();
 
             @$table->foreign('id_user')
