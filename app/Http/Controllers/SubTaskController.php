@@ -30,8 +30,14 @@ class SubTaskController extends Controller
         return view('homepage.detailtask', compact('task', 'subtasks'));
     }
 
-    public function create(){
+    public function preview(){
 
+        return view('homepage.previewtask');
+    }
+
+    public function create(){
+//
+//
 
         return view('homepage.addsubtask');
     }
@@ -47,9 +53,10 @@ class SubTaskController extends Controller
 
         $selectedUserId = $request->input('selected_user');
         $selectedUser = User::find($selectedUserId);
+        $id = $request->input('id_task');
 
         $requestdata = $request->all();
-//        $requestdata['id_task'] = ;
+        $requestdata['id_task'] = $id;
         $requestdata['id_user'] = $selectedUser->id;
         $requestdata['deadline'] = $deadline;
         $requestdata['created_by'] = $user->name;
@@ -57,7 +64,10 @@ class SubTaskController extends Controller
 
         SubTask::create($requestdata);
 
-        return redirect(\Illuminate\Support\Facades\URL::previous())->with('success', 'SubTask Added');
+//        $prev = \Illuminate\Support\Facades\URL::previous();
+//        $twprev = back()->getTargetUrl();
+
+        return redirect(route('preview'))->with('success', 'SubTask Added');
 
     }
 }

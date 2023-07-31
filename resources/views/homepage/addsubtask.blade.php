@@ -1,6 +1,7 @@
+
 <!doctype html>
 <html lang="en">
-<head>
+{{--<head>--}}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -18,11 +19,10 @@
 
         } );
     </script>
-</head>
-<body>
+{{--</head>--}}
+{{--<body>--}}
 @include('navbar')
 <div class="container py-3">
-
     <form action="{{route('addsubtask')}}" method="POST">
         @csrf
         <div class="form-group">
@@ -35,6 +35,13 @@
             </select>
         </div>
         <br/>
+        @php
+            $id = session('task')->getAttribute('id');
+        @endphp
+        <div class="form-group">
+            <label for="id_task">id Parent Task</label>
+            <input class="form-control" id="id_task" name="id_task" value="{{$id}}" readonly>
+        </div>
         <div class="form-group">
             <label for="Form1">Judul SubTask</label>
             <input class="form-control" id="Form1" name="judul" placeholder="Masukkan judul subtask">
@@ -59,5 +66,6 @@
 
 
 
-</body>
+
+{{--</body>--}}
 </html>

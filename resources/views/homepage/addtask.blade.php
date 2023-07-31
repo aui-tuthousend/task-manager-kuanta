@@ -12,44 +12,20 @@
                 <textarea class="form-control" name="deskripsi" id="Form2" rows="2"></textarea>
             </div>
         <div>SubTask & Tag Team</div>
-        <table class="table">
-            <thead class="table-primary">
-            <tr>
-                <th>id subtask</th>
-                <th>Judul</th>
-                <th>tagged id user</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-            <tbody>
-                @foreach($subtasks as $sub)
-                    <tr>
-                        <td class="align-middle">{{$sub->id}}</td>
-                        <td class="align-middle">{{$sub->judul}}</td>
-                        <td class="align-middle">{{$sub->id_user}}</td>
-                        <td class="align-middle">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-danger">delete</button>
-                                {{--                        <button type="button" class="btn btn-primary">Middle</button>--}}
-                                {{--                        <button type="button" class="btn btn-primary">Right</button>--}}
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-        <a href='/addtask/addsubtask' class="btn btn-primary">Tag Team +</a>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-
-        <button class="btn btn-primary">Submit Task</button>
+        <button type="submit" class="btn btn-primary">Submit task & tag team</button>
+{{--        <a href='/addtask/addsubtask' class="btn btn-primary">Submit task & tag team</a>--}}
     </form>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+{{--            <a href='/team' class="btn btn-primary">Save Task</a>--}}
+
+{{--        <button class="btn btn-primary">Save Task</button>--}}
 
 
 </div>

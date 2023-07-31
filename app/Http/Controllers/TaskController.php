@@ -41,16 +41,18 @@ class TaskController extends Controller
             'created_by' => $user->name,
 
         ]);
-            $idtask = $task->id;
 //        $requestdata = $request->all();
 //        $requestdata['created_by'] = $user->name;
 //
 //
 //        Task::create($requestdata);
+//            $idtask = $task->id;
+        session()->put('task', $task);
+        $idtask = session('task')->getAttribute('id');
 
 
 
-        return redirect('/addtask/addsubtask')->with('success', 'Task Added');
+        return redirect()->route('preview')->with('success', 'Task Added');
     }
 
 
