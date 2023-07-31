@@ -30,19 +30,20 @@ class SubTaskController extends Controller
         return view('homepage.detailtask', compact('task', 'subtasks'));
     }
 
-    public function preview(){
+    public function preview($id){
+        $Task = Task::with('subtasks')->findOrFail($id);
 
-        return view('homepage.previewtask');
+        return view('homepage.previewtask', compact('Task'));
     }
 
-    public function create(){
+    public function create($id){
 //
 //
 
         return view('homepage.addsubtask');
     }
 
-    public function store(Request $request){
+    public function store(Request $request, $idt){
 
 //        $request->validate([
 //           'deadline' => 'required|date',
@@ -67,7 +68,7 @@ class SubTaskController extends Controller
 //        $prev = \Illuminate\Support\Facades\URL::previous();
 //        $twprev = back()->getTargetUrl();
 
-        return redirect(route('preview'))->with('success', 'SubTask Added');
+        return redirect(route('preview', $id))->with('success', 'SubTask Added');
 
     }
 }

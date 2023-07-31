@@ -52,7 +52,7 @@ class TaskController extends Controller
 
 
 
-        return redirect()->route('preview')->with('success', 'Task Added');
+        return redirect()->route('preview', $idtask)->with('success', 'Task Added');
     }
 
 

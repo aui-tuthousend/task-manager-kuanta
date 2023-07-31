@@ -22,22 +22,23 @@
 {{--</head>--}}
 {{--<body>--}}
 @include('navbar')
+@php
+    $id = session('task')->getAttribute('id');
+@endphp
 <div class="container py-3">
-    <form action="{{route('addsubtask')}}" method="POST">
+    <form action="{{route('addsubtask', $id)}}" method="POST">
         @csrf
         <div class="form-group">
 
             <label for="select">Select Team</label>
             <select class="form-control" id="select" name="selected_user">
                 @foreach($users as $user)
-                    <option value="{{$user->id}}">{{$user->name}}</option>
+                    <option value="{{$user->id}}">{{$user->role}} - {{$user->name}}</option>
                 @endforeach
             </select>
         </div>
         <br/>
-        @php
-            $id = session('task')->getAttribute('id');
-        @endphp
+
         <div class="form-group">
             <label for="id_task">id Parent Task</label>
             <input class="form-control" id="id_task" name="id_task" value="{{$id}}" readonly>
