@@ -18,13 +18,14 @@ class SubTask extends Model
         'picked_at',
         'done_at',
         'deadline',
+        'user_name',
     ];
 
     public function usersFromSubTask(){
         return $this->belongsTo(User::class, 'id_user');
     }
 
-    public function taskFromSubTask(){
+    public function task(){
         return $this->belongsTo(Task::class, 'id_task');
     }
 }

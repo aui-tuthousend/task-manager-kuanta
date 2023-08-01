@@ -15,6 +15,7 @@
             <th>id SubTask</th>
             <th>Judul SubTask</th>
             <th>Deskripsi</th>
+            <th>Tagged User</th>
             <th>Deadline</th>
             <th>Action</th>
         </tr>
@@ -26,10 +27,15 @@
                     <td class="align-middle">{{$sub->id}}</td>
                     <td class="align-middle">{{$sub->judul}}</td>
                     <td class="align-middle">{{$sub->deskripsi}}</td>
+                    <td class="align-middle">{{$sub->user_name}}</td>
                     <td class="align-middle">{{$sub->deadline}}</td>
                     <td class="align-middle">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-danger">delete</button>
+                            <form action="{{route('delete', $sub->id)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                            <button type="submit" onclick="return confirm('Delete SubTask?')" class="btn btn-danger">delete</button>
+                            </form>
 {{--                                                                            <button type="button" class="btn btn-primary">Middle</button>--}}
 {{--                                                                            <button type="button" class="btn btn-primary">Right</button>--}}
                         </div>

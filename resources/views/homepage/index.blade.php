@@ -2,7 +2,7 @@
 @section('hometeam')
     <h1 >Halo {{Auth::user()->name}} </h1>
     <div class="d-flex align-items-center justify-content-between">
-        <h1 class="mb-0">List Tugas</h1>
+        <h2 class="mb-0">List Sub Tugas</h2>
         <a href='/addtask' class="btn btn-primary">Add Task + </a>
     </div>
     <hr/>
@@ -11,23 +11,23 @@
         <tr>
             <th>id Task</th>
             <th>Judul</th>
-            <th>Kreator</th>
+            <th>Deskripsi</th>
             <th>Tanggal Dibuat</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        @if ($tasks->count()>0)
-        @foreach($tasks as $task)
+        @if ($subtasks->count()>0)
+        @foreach($subtasks as $task)
             <tr>
-                <td class="align-middle">{{$task->id}}</td>
+                <td class="align-middle">{{$task->id_task}}</td>
                 <td class="align-middle">{{$task->judul}}</td>
-                <td class="align-middle">{{$task->created_by}}</td>
+                <td class="align-middle">{{$task->deskripsi}}</td>
                 <td class="align-middle">{{$task->created_at}}</td>
                 <td class="align-middle">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="{{route('detail', $task->id)}}" class="btn btn-primary">details</a>
-{{--                        <button type="button" class="btn btn-primary">Middle</button>--}}
+                        <button type="button" class="btn btn-warning me-2">Pick</button>
+                        <a href="{{route('detail', $task->id_task)}}" class="btn btn-primary">details</a>
 {{--                        <button type="button" class="btn btn-primary">Right</button>--}}
                     </div>
                 </td>

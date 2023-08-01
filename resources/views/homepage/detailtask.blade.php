@@ -8,33 +8,22 @@
     <u>Deskripsi</u>
     <h4>{{$Task->deskripsi}}</h4>
     <br/>
-    <u>Ditugaskan untuk anda</u>
+    <u>Seluruh SubTask</u>
     <table class="table">
         <thead class="table-primary">
         <tr>
             <th>id SubTask</th>
             <th>Judul SubTask</th>
             <th>Deskripsi</th>
+            <th>Tagged User</th>
             <th>Deadline</th>
-            <th>Action</th>
+{{--            <th>Action</th>--}}
         </tr>
         </thead>
         <tbody>
         @if ($Task->subtasks->count()>0)
-        @foreach($Task->subtasks as $sub)
-            <tr>
-                <td class="align-middle">{{$sub->id}}</td>
-                <td class="align-middle">{{$sub->judul}}</td>
-                <td class="align-middle">{{$sub->deskripsi}}</td>
-                <td class="align-middle">{{$sub->deadline}}</td>
-                <td class="align-middle">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-warning">pick</button>
-{{--                                                <button type="button" class="btn btn-primary">Middle</button>--}}
-{{--                                                <button type="button" class="btn btn-primary">Right</button>--}}
-                    </div>
-                </td>
-            </tr>
+        @foreach($Task->subtasks as $post)
+            <x-blog.detail :post="$post" />
         @endforeach
         @else
             <tr>

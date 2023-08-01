@@ -16,10 +16,18 @@ use Carbon\Carbon;
 class SubTaskController extends Controller
 {
 
-    public function index(){
-        $subtasks = SubTask::orderBy('created_at', 'DESC')->get();
+//    public function index(){
+//        $subtasks = SubTask::orderBy('created_at', 'DESC')->get();
+//
+//        return view('homepage.addtask', compact('subtasks'));
+//    }
+    public function viewAll(){
+        $user = Auth::user();
+        $subtasks = SubTask::where('id_user', $user->id)->orderBy('created_at', 'DESC')->get();
 
-        return view('homepage.addtask', compact('subtasks'));
+//
+
+        return view('homepage.index', compact('subtasks'));
     }
 
     public function indexdetail($id){
@@ -59,6 +67,7 @@ class SubTaskController extends Controller
         $requestdata = $request->all();
         $requestdata['id_task'] = $id;
         $requestdata['id_user'] = $selectedUser->id;
+        $requestdata['user_name'] = $selectedUser->name;
         $requestdata['deadline'] = $deadline;
         $requestdata['created_by'] = $user->name;
 
@@ -69,6 +78,16 @@ class SubTaskController extends Controller
 //        $twprev = back()->getTargetUrl();
 
         return redirect(route('preview', $id))->with('success', 'SubTask Added');
+
+    }
+
+    public function delete($id){
+        $sub = SubTask::find($id);
+
+        $idt = $sub->id_task;
+        $sub->delete();
+
+        return redirect(route('preview', $idt))->with('success', 'SubTask Deleted');
 
     }
 }

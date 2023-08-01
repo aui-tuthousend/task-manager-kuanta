@@ -43,12 +43,14 @@
             <label for="id_task">id Parent Task</label>
             <input class="form-control" id="id_task" name="id_task" value="{{$id}}" readonly>
         </div>
+
+        <label for="Form1">Judul SubTask</label>
+        <x-forms.inputText name="judul" placeholder="Masukkan Judul SubTask" id="Form1"/>
+
+        <label for="Form2">Deskripsi SubTask</label>
+{{--        <x-forms.inputText name="deskripsi" placeholder="Masukkan Deskripsi SubTask" id="Form2"/>--}}
+
         <div class="form-group">
-            <label for="Form1">Judul SubTask</label>
-            <input class="form-control" id="Form1" name="judul" placeholder="Masukkan judul subtask">
-        </div>
-        <div class="form-group">
-            <label for="Form2">Deskripsi SubTask</label>
             <textarea class="form-control" id="Form2" name="deskripsi" rows="2"></textarea>
         </div>
         <label for="datepicker">Deadline</label>
@@ -59,7 +61,7 @@
         <br/>
         <br/>
 
-        <button class="btn btn-primary">Submit</button>
+        <x-forms.button>Submit</x-forms.button>
     </form>
 </div>
 
