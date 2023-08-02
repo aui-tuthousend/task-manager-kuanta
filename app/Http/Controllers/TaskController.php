@@ -18,6 +18,12 @@ class TaskController extends Controller
         return view('homepage.index', compact('tasks'));
     }
 
+    public function indexadmin(){
+        $tasks = Task::orderBy('created_at', 'DESC')->get();
+
+        return view('homeadmin.indexadmin', compact('tasks'));
+    }
+
     public function create(){
 
         return view('homepage.addtask');
@@ -29,8 +35,12 @@ class TaskController extends Controller
 
 //        $subtask = $Task->subtasks;
 
-
         return view('homepage.detailtask', compact('Task'));
+    }
+
+    public function showadmin($id){
+        $Task = Task::with('subtasks')->FindOrFail($id);
+        return view('homeadmin.detailtaskadmin',compact('Task'));
     }
 
     public function store(Request $request){

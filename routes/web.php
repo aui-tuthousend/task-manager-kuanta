@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'admin'])->middleware('userAcces');
     Route::get('/team', [\App\Http\Controllers\AdminController::class, 'team'])->middleware('adminAcces');
     Route::get('/team', [\App\Http\Controllers\SubTaskController::class, 'viewAll'])->middleware('adminAcces');
-
+    Route::get('/admin',[\App\Http\Controllers\TaskController::class,'indexadmin'])->middleware('userAcces');
 
     Route::get('/addtask', [\App\Http\Controllers\TaskController::class, 'create']);
     route::post('/addtask', [\App\Http\Controllers\TaskController::class, 'store'])->name('addtask');
@@ -43,4 +43,5 @@ Route::middleware(['auth'])->group(function (){
 //    Route::get('/addtask', [\App\Http\Controllers\SubTaskController::class, 'index']);
     Route::get('/detailtask/{idtask}', [\App\Http\Controllers\TaskController::class, 'show'])->name('detail');
     Route::get('/logout', [\App\Http\Controllers\SesiController::class, 'logout']);
+    Route::get('/detailadmtask/{idtask}',[\App\Http\Controllers\TaskController::class, 'showadmin'])->name('detailadmin');
 });

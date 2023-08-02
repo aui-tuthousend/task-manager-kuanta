@@ -9,7 +9,7 @@
     <table class="table table-hover">
         <thead class="table-primary">
         <tr>
-            <th>id Task</th>
+            <th>Judul Task</th>
             <th>Judul</th>
             <th>Deskripsi</th>
             <th>Tanggal Dibuat</th>
@@ -20,7 +20,7 @@
         @if ($subtasks->count()>0)
         @foreach($subtasks as $task)
             <tr>
-                <td class="align-middle">{{$task->id_task}}</td>
+                <td class="align-middle">{{$task->judul_task}}</td>
                 <td class="align-middle">{{$task->judul}}</td>
                 <td class="align-middle">{{$task->deskripsi}}</td>
                 <td class="align-middle">{{$task->created_at}}</td>

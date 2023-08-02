@@ -19,6 +19,7 @@ class SubTask extends Model
         'done_at',
         'deadline',
         'user_name',
+        'judul_task'
     ];
 
     public function usersFromSubTask(){

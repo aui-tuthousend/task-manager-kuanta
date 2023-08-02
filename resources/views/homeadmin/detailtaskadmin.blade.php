@@ -17,14 +17,15 @@
             <th>Deskripsi</th>
             <th>Tagged User</th>
             <th>Deadline</th>
-{{--            <th>Action</th>--}}
+            {{--            <th>Action</th>--}}
         </tr>
         </thead>
         <tbody>
         @if ($Task->subtasks->count()>0)
-        @foreach($Task->subtasks as $post)
-            <x-blog.detail :post="$post" />
-        @endforeach
+            @foreach($Task->subtasks as $post)
+                <x-blog.detail :post="$post" />
+            @endforeach
+
         @else
             <tr>
                 <td class="text-center" colspan="5">Tidak ada sub task untuk anda</td>

@@ -63,6 +63,7 @@ class SubTaskController extends Controller
         $selectedUserId = $request->input('selected_user');
         $selectedUser = User::find($selectedUserId);
         $id = $request->input('id_task');
+        $judul_task = $request->input('judul_task');
 
         $requestdata = $request->all();
         $requestdata['id_task'] = $id;
@@ -70,6 +71,7 @@ class SubTaskController extends Controller
         $requestdata['user_name'] = $selectedUser->name;
         $requestdata['deadline'] = $deadline;
         $requestdata['created_by'] = $user->name;
+        $requestdata['judul_task'] = $judul_task;
 
 
         SubTask::create($requestdata);
@@ -89,5 +91,14 @@ class SubTaskController extends Controller
 
         return redirect(route('preview', $idt))->with('success', 'SubTask Deleted');
 
+    }
+
+    public function deleteadmin($id){
+        $sub = SubTask::find($id);
+
+        $idt = $sub->id_task;
+        $sub->delete();
+
+        return redirect(route('preview',$idt))->with('success','Task Deleted');
     }
 }
