@@ -34,7 +34,7 @@
     </table>
 
     <br/>
-    <a href='{{route('preview', $Task->id)}}' class="btn btn-primary">Edit</a>
+    <a href='{{route('update', $Task->id)}}' class="btn btn-primary">Edit</a>
 
 
 </div>

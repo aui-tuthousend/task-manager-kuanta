@@ -15,7 +15,14 @@ class UserController extends Controller
     {
         $users = User::orderBy('role', 'ASC')->get();
 
-        return view('homepage.addsubtask', compact('users'));
+        return view('homepage.add.addsubtask', compact('users'));
+    }
+
+    public function indexEdit()
+    {
+        $userss = User::orderBy('role', 'ASC')->get();
+
+        return view('homepage.update.editsubtask', compact('userss'));
     }
 
     /**

@@ -36,9 +36,17 @@ Route::middleware(['auth'])->group(function (){
     route::post('/addtask', [\App\Http\Controllers\TaskController::class, 'store'])->name('addtask');
     Route::delete('/addtask/previewtask/{id}', [\App\Http\Controllers\SubTaskController::class, 'delete'])->name('delete');
     Route::get('/addtask/previewtask/{id}', [\App\Http\Controllers\SubTaskController::class, 'preview'])->name('preview');
+    Route::get('/updatetask/{id}', [\App\Http\Controllers\SubTaskController::class, 'update'])->name('update');
+    Route::get('/updatetask/{id}/editsubtask', [\App\Http\Controllers\SubTaskController::class, 'edit'])->name('edit');
+    Route::post('/updatetask/{id}/editsubtask', [\App\Http\Controllers\SubTaskController::class, 'editStore'])->name('editStore');
+    Route::get('/updatetask/{id}/addsubtask', [\App\Http\Controllers\SubTaskController::class, 'create2'])->name('add');
+    Route::post('/updatetask/{id}/addsubtask', [\App\Http\Controllers\SubTaskController::class, 'store2'])->name('adds');
+
+
 
     Route::get('/addtask/previewtask/{id}/addsubtask', [\App\Http\Controllers\SubTaskController::class, 'create']);
     Route::post('/addtask/previewtask/{id}/addsubtask', [\App\Http\Controllers\SubTaskController::class, 'store'])->name('addsubtask');
+
     Route::get('/addtask/previewtask/{id}/addsubtask', [\App\Http\Controllers\UserController::class, 'index']);
 //    Route::get('/addtask', [\App\Http\Controllers\SubTaskController::class, 'index']);
     Route::get('/detailtask/{idtask}', [\App\Http\Controllers\TaskController::class, 'show'])->name('detail');

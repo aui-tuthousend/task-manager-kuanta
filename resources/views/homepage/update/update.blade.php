@@ -4,9 +4,9 @@
     <h2>Preview Task</h2>
     <br/>
     <u>Judul</u>
-    <h4>{{session('task')->judul}}</h4>
+    <h4>{{$Task->judul}}</h4>
     <u>Deskripsi</u>
-    <h4>{{session('task')->deskripsi}}</h4>
+    <h4>{{$Task->deskripsi}}</h4>
     <br/>
     <u>Subtask</u>
     <table class="table">
@@ -31,13 +31,14 @@
                     <td class="align-middle">{{$sub->deadline}}</td>
                     <td class="align-middle">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <form action="{{route('delete', $sub->id)}}" method="POST">
+
+                            <a href='{{route('edit', $sub->id)}}' type="button" class="btn btn-warning mb-auto p-2">edit</a>
+
+                            <form action="{{route('delete', $sub->id)}}" type="button" method="POST" class="btn btn-danger p-0" onclick="return confirm('Delete SubTask?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Delete SubTask?')" class="btn btn-danger">delete</button> | <a href="#">Edit</a>
+                                <button class="btn btn-danger m-0" >delete</button>
                             </form>
-                            {{--                                                                            <button type="button" class="btn btn-primary">Middle</button>--}}
-                            {{--                                                                            <button type="button" class="btn btn-primary">Right</button>--}}
                         </div>
                     </td>
                 </tr>
@@ -50,12 +51,10 @@
         </tbody>
     </table>
 
-    <a href='{{'/addtaskadmin/previewtaskadmin/{id}/addsubtask', session('task')->id}}' class="btn btn-primary">Add Subtask</a>
+    <a href='{{route('add', $Task->id)}}' class="btn btn-primary">Add Subtask</a>
     <br/>
     <br/>
     <br/>
-    <a href='/admin' class="btn btn-primary">Save Task & SubTask</a>
-
-
+    <a href='/team' class="btn btn-primary">Save Task & SubTask</a>
 
 </div>

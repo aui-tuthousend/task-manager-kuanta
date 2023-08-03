@@ -26,7 +26,7 @@ class TaskController extends Controller
 
     public function create(){
 
-        return view('homepage.addtask');
+        return view('homepage.add.addtask');
     }
 
     public function show($id){
@@ -35,7 +35,7 @@ class TaskController extends Controller
 
 //        $subtask = $Task->subtasks;
 
-        return view('homepage.detailtask', compact('Task'));
+        return view('homepage.preview.detailtask', compact('Task'));
     }
 
     public function showadmin($id){
