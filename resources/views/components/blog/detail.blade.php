@@ -3,6 +3,7 @@
     <td class="align-middle">{{$post->judul}}</td>
     <td class="align-middle">{{$post->deskripsi}}</td>
     <td class="align-middle">{{$post->user_name}}</td>
+    <td class="align-middle">{{$post->status}}</td>
     <td class="align-middle">{{$post->deadline}}</td>
 {{--    <td class="align-middle">--}}
 {{--        <div class="btn-group" role="group" aria-label="Basic example">--}}

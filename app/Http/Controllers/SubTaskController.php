@@ -23,11 +23,46 @@ class SubTaskController extends Controller
 //    }
     public function viewAll(){
         $user = Auth::user();
-        $subtasks = SubTask::where('id_user', $user->id)->orderBy('created_at', 'DESC')->get();
+        $subtasks = SubTask::where('id_user', $user->id)->orderBy('created_at', 'DESC')->simplePaginate(5);
 
 //
 
         return view('homepage.index', compact('subtasks'));
+    }
+
+    public function viewDone(){
+        $user = Auth::user();
+        $subtasks = SubTask::where('id_user', $user->id)->orderBy('created_at', 'DESC')->simplePaginate(5);
+
+//
+
+        return view('homepage.preview.finished', compact('subtasks'));
+    }
+
+    public function pick($id){
+        $sub = SubTask::find($id);
+        $current = Carbon::now('Asia/Jakarta');
+        $status = 'Progres';
+
+        $sub->update([
+           'picked_at' => $current,
+            'status' => $status,
+        ]);
+
+        return redirect('/team')->with('Sukses', 'Task picked');
+    }
+
+    public function done($id){
+        $sub = SubTask::find($id);
+        $current = Carbon::now('Asia/Jakarta');
+        $status = "Done";
+
+        $sub->update([
+            'done_at' => $current,
+            'status' => $status
+        ]);
+
+        return redirect('/team')->with('Sukses', 'Task picked');
     }
 
     public function indexdetail($id){
@@ -73,7 +108,9 @@ class SubTaskController extends Controller
     }
 
     public function store(Request $request, $idt){
-        $deadline = Carbon::createFromFormat('d-m-Y', $request->input('deadline'))->format('Y-m-d H:i:s');
+        $inputDate = $request->input('deadline');
+        $deadline = Carbon::createFromFormat('d-m-Y', $inputDate);
+        $formated = $deadline->format('Y-m-d');
         $user = Auth::user();
 
         $selectedUserId = $request->input('selected_user');
@@ -85,7 +122,7 @@ class SubTaskController extends Controller
         $requestdata['id_task'] = $id;
         $requestdata['id_user'] = $selectedUser->id;
         $requestdata['user_name'] = $selectedUser->name;
-        $requestdata['deadline'] = $deadline;
+        $requestdata['deadline'] = $formated;
         $requestdata['created_by'] = $user->name;
         $requestdata['judul_task'] = $judul_task;
 
@@ -96,7 +133,9 @@ class SubTaskController extends Controller
     }
 
     public function store2(Request $request, $idt){
-        $deadline = Carbon::createFromFormat('d-m-Y', $request->input('deadline'))->format('Y-m-d H:i:s');
+        $inputDate = $request->input('deadline');
+        $deadline = Carbon::createFromFormat('d-m-Y', $inputDate);
+        $formated = $deadline->format('Y-m-d');
         $user = Auth::user();
 
         $selectedUserId = $request->input('selected_user');
@@ -108,7 +147,7 @@ class SubTaskController extends Controller
         $requestdata['id_task'] = $id;
         $requestdata['id_user'] = $selectedUser->id;
         $requestdata['user_name'] = $selectedUser->name;
-        $requestdata['deadline'] = $deadline;
+        $requestdata['deadline'] = $formated;
         $requestdata['created_by'] = $user->name;
         $requestdata['judul_task'] = $judul_task;
 
@@ -134,9 +173,11 @@ class SubTaskController extends Controller
         $sub = SubTask::find($idt);
         $selectedUserId = $request->input('selected_user');
         $selectedUser = User::find($selectedUserId);
+        $inputDate = $request->input('deadline');
+        $deadline = Carbon::createFromFormat('d-m-Y', $inputDate);
+        $formated = $deadline->format('Y-m-d');
 
-        $deadline = Carbon::createFromFormat('d-m-Y', $request->input('deadline'))->format('d-m-Y H:i:s');
-//        $deadline = Carbon::createFromFormat('d-m-Y H:i', $request->input('deadline'))->format('Y-m-d H:i:s');
+
 
         $user = Auth::user();
 
@@ -153,7 +194,7 @@ class SubTaskController extends Controller
             'judul_task'=>$judultask,
             'user_name'=>$selectedUser->name,
             'created_by'=>$user->name,
-            'deadline'=>$deadline
+            'deadline'=>$formated
         ]);
 
 

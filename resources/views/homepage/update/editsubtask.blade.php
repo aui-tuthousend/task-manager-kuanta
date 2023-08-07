@@ -32,7 +32,9 @@
             <select class="form-control" id="select" name="selected_user">
                 <option value="{{$Task->id_user}}">{{$Task->user_name}}</option>
                 @foreach($users as $user)
-                    <option value="{{$user->id}}">{{$user->role}} - {{$user->name}}</option>
+                    @if($user->role != 'admin')
+                        <option value="{{$user->id}}">{{$user->role}} - {{$user->name}}</option>
+                    @endif
                 @endforeach
             </select>
         </div>

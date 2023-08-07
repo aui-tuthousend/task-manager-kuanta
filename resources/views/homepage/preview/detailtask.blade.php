@@ -16,6 +16,7 @@
             <th>Judul SubTask</th>
             <th>Deskripsi</th>
             <th>Tagged User</th>
+            <th>Status</th>
             <th>Deadline</th>
 {{--            <th>Action</th>--}}
         </tr>

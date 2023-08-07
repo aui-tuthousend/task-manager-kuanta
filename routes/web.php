@@ -31,6 +31,11 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/team', [\App\Http\Controllers\AdminController::class, 'team'])->middleware('adminAcces');
     Route::get('/team', [\App\Http\Controllers\SubTaskController::class, 'viewAll'])->middleware('adminAcces');
     Route::get('/admin',[\App\Http\Controllers\TaskController::class,'indexadmin'])->middleware('userAcces');
+    Route::post('/team/{id}/pick', [\App\Http\Controllers\SubTaskController::class, 'pick'])->name('pick');
+    Route::post('/team/{id}/done', [\App\Http\Controllers\SubTaskController::class, 'done'])->name('done');
+
+    Route::get('/team/finished', [\App\Http\Controllers\SubTaskController::class, 'viewDone'])->middleware('adminAcces')->name('finish');
+
 
     Route::get('/addtask', [\App\Http\Controllers\TaskController::class, 'create']);
     route::post('/addtask', [\App\Http\Controllers\TaskController::class, 'store'])->name('addtask');

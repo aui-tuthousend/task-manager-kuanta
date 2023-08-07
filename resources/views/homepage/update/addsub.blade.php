@@ -31,10 +31,9 @@
             <label for="select">Select Team</label>
             <select class="form-control" id="select" name="selected_user">
                 @foreach($users as $user)
-                    @if($user->role == 'admin')
-                        <option>select user</option>
+                    @if($user->role != 'admin')
+                        <option value="{{$user->id}}">{{$user->role}} - {{$user->name}}</option>
                     @endif
-                    <option value="{{$user->id}}">{{$user->role}} - {{$user->name}}</option>
                 @endforeach
             </select>
         </div>

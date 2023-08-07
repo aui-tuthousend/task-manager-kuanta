@@ -31,6 +31,7 @@
                     <td class="align-middle">{{$sub->deadline}}</td>
                     <td class="align-middle">
                         <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href='{{route('edit', $sub->id)}}' type="button" class="btn btn-warning mb-auto p-2">edit</a>
                             <form action="{{route('delete', $sub->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -54,6 +55,10 @@
     <br/>
     <br/>
     <br/>
-    <a href='/team' class="btn btn-primary">Save Task & SubTask</a>
+    @if ($Task->subtasks->count()==0)
+        <a href='/team' class="btn btn-primary" onclick="return confirm('Belum ada SubTask Yakin Save Task?')">Save Task & SubTask</a>
+    @else
+        <a href='/team' class="btn btn-primary">Save Task & SubTask</a>
+    @endif
 
 </div>
