@@ -23,7 +23,10 @@ class SubTaskController extends Controller
 //    }
     public function viewAll(){
         $user = Auth::user();
-        $subtasks = SubTask::where('id_user', $user->id)->orderBy('created_at', 'DESC')->simplePaginate(5);
+        $subtasks = SubTask::where('id_user', $user->id)->where(function($query) {
+            $query->where('status', '=', 'Progres')
+                ->orWhereNull('status');
+        })->orderBy('created_at', 'DESC')->simplePaginate(5);
 
 //
 

@@ -20,7 +20,7 @@
         <tbody>
         @if ($subtasks->count()>0)
         @foreach($subtasks as $task)
-            @if($task->status != "Done")
+{{--            @if($task->status != "Done")--}}
             <tr>
                 <td class="align-middle">{{$task->judul_task}}</td>
                 <td class="align-middle">{{$task->judul}}</td>
@@ -51,7 +51,7 @@
                     </div>
                 </td>
             </tr>
-            @endif
+{{--            @endif--}}
         @endforeach
         @else
             <tr>
