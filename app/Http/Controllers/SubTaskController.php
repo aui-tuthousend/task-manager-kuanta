@@ -112,8 +112,6 @@ class SubTaskController extends Controller
 
     public function store(Request $request, $idt){
         $inputDate = $request->input('deadline');
-        $deadline = Carbon::createFromFormat('d-m-Y', $inputDate);
-        $formated = $deadline->format('Y-m-d');
         $user = Auth::user();
 
         $selectedUserId = $request->input('selected_user');
@@ -125,7 +123,7 @@ class SubTaskController extends Controller
         $requestdata['id_task'] = $id;
         $requestdata['id_user'] = $selectedUser->id;
         $requestdata['user_name'] = $selectedUser->name;
-        $requestdata['deadline'] = $formated;
+        $requestdata['deadline'] = $inputDate;
         $requestdata['created_by'] = $user->name;
         $requestdata['judul_task'] = $judul_task;
 
@@ -137,8 +135,6 @@ class SubTaskController extends Controller
 
     public function store2(Request $request, $idt){
         $inputDate = $request->input('deadline');
-        $deadline = Carbon::createFromFormat('d-m-Y', $inputDate);
-        $formated = $deadline->format('Y-m-d');
         $user = Auth::user();
 
         $selectedUserId = $request->input('selected_user');
@@ -150,7 +146,7 @@ class SubTaskController extends Controller
         $requestdata['id_task'] = $id;
         $requestdata['id_user'] = $selectedUser->id;
         $requestdata['user_name'] = $selectedUser->name;
-        $requestdata['deadline'] = $formated;
+        $requestdata['deadline'] = $inputDate;
         $requestdata['created_by'] = $user->name;
         $requestdata['judul_task'] = $judul_task;
 
@@ -177,10 +173,6 @@ class SubTaskController extends Controller
         $selectedUserId = $request->input('selected_user');
         $selectedUser = User::find($selectedUserId);
         $inputDate = $request->input('deadline');
-        $deadline = Carbon::createFromFormat('d-m-Y', $inputDate);
-        $formated = $deadline->format('Y-m-d');
-
-
 
         $user = Auth::user();
 
@@ -197,7 +189,7 @@ class SubTaskController extends Controller
             'judul_task'=>$judultask,
             'user_name'=>$selectedUser->name,
             'created_by'=>$user->name,
-            'deadline'=>$formated
+            'deadline'=>$inputDate
         ]);
 
 

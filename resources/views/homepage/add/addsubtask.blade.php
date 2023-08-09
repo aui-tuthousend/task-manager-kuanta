@@ -1,26 +1,4 @@
 
-<!doctype html>
-<html lang="en">
-{{--<head>--}}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script>
-        $( function() {
-            $( "#datepicker" ).datepicker({
-                dateFormat: "dd-mm-yy",
-                changeMonth: true,
-                changeYear: true,
-                buttonText:"date"
-            });
-
-        } );
-    </script>
-{{--</head>--}}
-{{--<body>--}}
 @include('navbar')
 @php
     $id = session('task')->getAttribute('id');
@@ -63,7 +41,7 @@
         </div>
         <label for="datepicker">Deadline</label>
         <br/>
-        <input type="text" name="deadline" id="datepicker">
+        <input type="datetime-local" name="deadline" id="datepicker">
 
         <br/>
         <br/>
@@ -75,8 +53,3 @@
 
 
 
-
-
-
-{{--</body>--}}
-</html>
