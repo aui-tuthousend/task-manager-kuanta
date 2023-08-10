@@ -6,7 +6,11 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href='/team'>Home</a>
+                    @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
+                       <a class="nav-link active" href='/admin'>Home</a>
+                    @else
+                        <a class="nav-link active" href='/team'>Home</a>
+                    @endif
                 </li>
 
                 <li class="nav-item">

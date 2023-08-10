@@ -36,6 +36,10 @@ Route::middleware(['auth'])->group(function (){
 
     Route::get('/team/finished', [\App\Http\Controllers\SubTaskController::class, 'viewDone'])->middleware('adminAcces')->name('finish');
 
+    Route::get('/detailadmtask/{idtask}',[\App\Http\Controllers\TaskController::class, 'showadmin'])->name('detailadmin');
+    Route::delete('/detailadmtask/{idtask}', [\App\Http\Controllers\TaskController::class, 'delete'])->name('deleteadm');
+
+
 
     Route::get('/addtask', [\App\Http\Controllers\TaskController::class, 'create']);
     route::post('/addtask', [\App\Http\Controllers\TaskController::class, 'store'])->name('addtask');
@@ -56,5 +60,4 @@ Route::middleware(['auth'])->group(function (){
 //    Route::get('/addtask', [\App\Http\Controllers\SubTaskController::class, 'index']);
     Route::get('/detailtask/{idtask}', [\App\Http\Controllers\TaskController::class, 'show'])->name('detail');
     Route::get('/logout', [\App\Http\Controllers\SesiController::class, 'logout']);
-    Route::get('/detailadmtask/{idtask}',[\App\Http\Controllers\TaskController::class, 'showadmin'])->name('detailadmin');
 });

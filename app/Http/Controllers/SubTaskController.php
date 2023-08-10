@@ -16,11 +16,6 @@ use Carbon\Carbon;
 class SubTaskController extends Controller
 {
 
-//    public function index(){
-//        $subtasks = SubTask::orderBy('created_at', 'DESC')->get();
-//
-//        return view('homepage.addtask', compact('subtasks'));
-//    }
     public function viewAll(){
         $user = Auth::user();
         $subtasks = SubTask::where('id_user', $user->id)->where(function($query) {
@@ -68,13 +63,6 @@ class SubTaskController extends Controller
         return redirect('/team')->with('Sukses', 'Task picked');
     }
 
-    public function indexdetail($id){
-        $task = Task::findOrFail($id);
-
-        $subtasks = $task->subtasksFromTask;
-
-        return view('homepage.detailtask', compact('task', 'subtasks'));
-    }
 
     public function preview($id){
         $Task = Task::with('subtasks')->findOrFail($id);
@@ -152,19 +140,37 @@ class SubTaskController extends Controller
 
 
         SubTask::create($requestdata);
+
+    $apikey="50aa19d21fdf65a13519716230fa32004b79ceda";
+    $tujuan="6281334327567"; //atau $tujuan="Group Chat Name";
+    $pesan="Hiii ini pesan test.";
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://starsender.online/api/sendText?message='.rawurlencode($pesan).'&tujuan='.rawurlencode($tujuan.'@s.whatsapp.net'),
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_HTTPHEADER => array(
+            'apikey: '.$apikey
+        ),
+    ));
+
+    $response = curl_exec($curl);
+
+    curl_close($curl);
+    echo $response;
+
         return redirect(route('update', $id))->with('success', 'SubTask Added');
 
     }
 
-    public function delete($id){
-        $sub = SubTask::find($id);
 
-        $idt = $sub->id_task;
-        $sub->delete();
-
-        return redirect(route('update', $idt))->with('success', 'SubTask Deleted');
-
-    }
 
     public function editStore(Request $request, $idt)
     {
@@ -195,12 +201,14 @@ class SubTaskController extends Controller
 
         return redirect (route('update', $idTask))->with('success', 'SubTask Updated');
     }
-    public function deleteadmin($id){
+
+    public function delete($id){
         $sub = SubTask::find($id);
 
         $idt = $sub->id_task;
         $sub->delete();
 
-        return redirect(route('preview', $idt))->with('success','Task Deleted');
+        return redirect(route('update', $idt))->with('success', 'SubTask Deleted');
+
     }
 }

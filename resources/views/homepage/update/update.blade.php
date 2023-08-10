@@ -55,6 +55,10 @@
     <br/>
     <br/>
     <br/>
+    @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
+        <a href='/admin' class="btn btn-primary">Save Task & SubTask</a>
+    @else
     <a href='/team' class="btn btn-primary">Save Task & SubTask</a>
+    @endif
 
 </div>

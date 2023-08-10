@@ -55,10 +55,11 @@
     <br/>
     <br/>
     <br/>
-    @if ($Task->subtasks->count()==0)
-        <a href='/team' class="btn btn-primary" onclick="return confirm('Belum ada SubTask Yakin Save Task?')">Save Task & SubTask</a>
+    @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
+        <a class="nav-link active" href='/admin'>Home</a>
     @else
-        <a href='/team' class="btn btn-primary">Save Task & SubTask</a>
+        <a class="nav-link active" href='/team'>Home</a>
     @endif
+{{--        <a href='/team' class="btn btn-primary">Save Task & SubTask</a>--}}
 
 </div>

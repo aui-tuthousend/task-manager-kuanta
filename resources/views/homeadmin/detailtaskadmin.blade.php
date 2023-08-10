@@ -16,26 +16,40 @@
             <th>Judul SubTask</th>
             <th>Deskripsi</th>
             <th>Tagged User</th>
+            <th>Status</th>
             <th>Deadline</th>
-            {{--            <th>Action</th>--}}
         </tr>
         </thead>
         <tbody>
         @if ($Task->subtasks->count()>0)
             @foreach($Task->subtasks as $post)
-                <x-blog.detail :post="$post" />
+                <tr>
+                    <td class="align-middle">{{$post->id}}</td>
+                    <td class="align-middle">{{$post->judul}}</td>
+                    <td class="align-middle">{{$post->deskripsi}}</td>
+                    <td class="align-middle">{{$post->user_name}}</td>
+                    <td class="align-middle">{{$post->status}}</td>
+                    <td class="align-middle">{{$post->deadline}}</td>
+                </tr>
+{{--                <x-blog.detail :post="$post" />--}}
             @endforeach
 
         @else
             <tr>
-                <td class="text-center" colspan="5">Tidak ada sub task untuk anda</td>
+                <td class="text-center" colspan="5">Tidak ada sub task</td>
             </tr>
         @endif
         </tbody>
     </table>
 
     <br/>
-    <a href='{{route('preview', $Task->id)}}' class="btn btn-primary">Edit</a>
-
+    <a href='{{route('update', $Task->id)}}' class="btn btn-primary">Edit</a>
+    @if ($Task->subtasks->count()==0)
+        <form action="{{route('deleteadm', $Task->id)}}" type="button" method="POST" class="btn btn-danger p-0 mt-0" onclick="return confirm('Delete Task?')">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger mt-2" >delete</button>
+        </form>
+    @endif
 
 </div>

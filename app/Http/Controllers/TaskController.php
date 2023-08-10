@@ -19,7 +19,7 @@ class TaskController extends Controller
     }
 
     public function indexadmin(){
-        $tasks = Task::orderBy('created_at', 'DESC')->get();
+        $tasks = Task::orderBy('created_at', 'DESC')->simplePaginate(5);
 
         return view('homeadmin.indexadmin', compact('tasks'));
     }
@@ -38,6 +38,7 @@ class TaskController extends Controller
         return view('homepage.preview.detailtask', compact('Task'));
     }
 
+
     public function showadmin($id){
         $Task = Task::with('subtasks')->FindOrFail($id);
         return view('homeadmin.detailtaskadmin',compact('Task'));
@@ -52,18 +53,22 @@ class TaskController extends Controller
             'created_by' => $user->name,
 
         ]);
-//        $requestdata = $request->all();
-//        $requestdata['created_by'] = $user->name;
-//
-//
-//        Task::create($requestdata);
-//            $idtask = $task->id;
+
         session()->put('task', $task);
         $idtask = session('task')->getAttribute('id');
 
 
 
         return redirect()->route('preview', $idtask)->with('success', 'Task Added');
+    }
+
+    public function delete($id){
+        $sub = Task::find($id);
+
+        $sub->delete();
+
+        return redirect('/admin')->with('success', 'SubTask Deleted');
+
     }
 
 
