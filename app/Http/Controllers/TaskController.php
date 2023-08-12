@@ -67,7 +67,7 @@ class TaskController extends Controller
 
         $sub->delete();
 
-        return redirect('/admin')->with('success', 'SubTask Deleted');
+        return redirect('/admin')->with('deleted', 'Task Deleted');
 
     }
 

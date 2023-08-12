@@ -2,13 +2,28 @@
 @section('homeadm')
 
     <h1 >Halo {{Auth::user()->name}} </h1>
-        <a href='/download' class="btn-primary"> Download</a>
     <div class="d-flex align-items-center justify-content-between">
         <h2 class="mb-0">List Tugas</h2>
+        <a href='/download' class="btn btn-primary">Download</a>
         <a href='/addtask' class="btn btn-primary">Add Task + </a>
         <a href='/register' class="btn btn-primary">Register</a>
     </div>
     <hr/>
+    @if(session('deleted'))
+        <div id="success-message" class="alert alert-success">
+            {{ session('deleted') }}
+        </div>
+    @endif
+
+    <script>
+        // Remove the success message after 3 seconds
+        setTimeout(function() {
+            var successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+        }, 3000);
+    </script>
     <table class="table table-hover">
         <thead class="table-primary">
         <tr>
@@ -70,6 +85,8 @@
     <div class="ms-2 pt-1">
         {{ $tasks->links() }}
     </div>
+
+
 
 @endsection
 
