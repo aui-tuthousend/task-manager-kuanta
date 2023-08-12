@@ -202,6 +202,18 @@ class SubTaskController extends Controller
         return redirect (route('update', $idTask))->with('success', 'SubTask Updated');
     }
 
+    public function download(Request $request){
+        $user_id = $request->input('user_id');
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        $subtasks = Subtask::where('id_user', $user_id)
+            ->whereBetween('created_at', [$start_date, $end_date])
+            ->get();
+
+        return view('homeadmin.download.export', compact('subtasks'));
+    }
+
     public function delete($id){
         $sub = SubTask::find($id);
 

@@ -53,7 +53,7 @@ class UserController extends Controller
             'role' => $validatedData['role'],
         ]);
 
-        return redirect('/admin')->with('success', 'User created successfully!');
+        return redirect('/admin')->with('created', 'User created successfully!');
     }
 
     /**

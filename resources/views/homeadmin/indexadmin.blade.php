@@ -1,10 +1,30 @@
 @extends('homeadmin.homeadmin')
 @section('homeadm')
 
+    @if(session('created'))
+        <div id="created-message" class="alert alert-success">
+            {{ session('created') }}
+        </div>
+    @endif
+
+    <script>
+        // Remove the success message after 3 seconds
+        setTimeout(function() {
+            var successMessage = document.getElementById('created-message');
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+        }, 3000);
+    </script>
+
     <h1 >Halo {{Auth::user()->name}} </h1>
-    <div class="d-flex align-items-center justify-content-between">
         <h2 class="mb-0">List Tugas</h2>
-        <a href='/download' class="btn btn-primary">Download</a>
+    <div class="d-flex align-items-center justify-content-between">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaldownload">
+            Download
+        </button>
+{{--        <a href='#' class="btn btn-primary" data-toggle="modal" data-target="#modaldownload">Download</a>--}}
+
         <a href='/addtask' class="btn btn-primary">Add Task + </a>
         <a href='/register' class="btn btn-primary">Register</a>
     </div>
@@ -86,7 +106,7 @@
         {{ $tasks->links() }}
     </div>
 
-
+    @include('homeadmin.download.modalform')
 
 @endsection
 

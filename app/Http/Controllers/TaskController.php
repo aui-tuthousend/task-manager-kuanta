@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SubTask;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +21,9 @@ class TaskController extends Controller
 
     public function indexadmin(){
         $tasks = Task::orderBy('created_at', 'DESC')->simplePaginate(5);
+        $users = User::orderBy('role', 'ASC')->get();
 
-        return view('homeadmin.indexadmin', compact('tasks'));
+        return view('homeadmin.indexadmin', compact('tasks', 'users'));
     }
 
     public function create(){
