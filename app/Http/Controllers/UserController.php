@@ -30,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('homeadmin.register');
     }
 
     /**
@@ -38,7 +38,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:40',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4',
+            'role' => 'required|in:admin,creative technology,school design,operation,partnership,kuanta institute',
+        ]);
+
+        // Create a new user with the validated data
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => bcrypt($validatedData['password']),
+            'role' => $validatedData['role'],
+        ]);
+
+        return redirect('/admin');
     }
 
     /**

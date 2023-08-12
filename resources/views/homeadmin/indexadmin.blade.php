@@ -6,6 +6,7 @@
     <div class="d-flex align-items-center justify-content-between">
         <h2 class="mb-0">List Tugas</h2>
         <a href='/addtask' class="btn btn-primary">Add Task + </a>
+        <a href='/register' class="btn btn-primary">Register</a>
     </div>
     <hr/>
     <table class="table table-hover">

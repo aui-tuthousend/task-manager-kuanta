@@ -23,7 +23,10 @@ Route::middleware(['guest'])->group(function (){
 });
 
 Route::get('/home', function (){
-    return redirect('/team');
+    if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
+         return redirect('/admin');
+    else
+        return redirect('/team');
 });
 
 Route::middleware(['auth'])->group(function (){
@@ -38,6 +41,10 @@ Route::middleware(['auth'])->group(function (){
 
     Route::get('/detailadmtask/{idtask}',[\App\Http\Controllers\TaskController::class, 'showadmin'])->name('detailadmin');
     Route::delete('/detailadmtask/{idtask}', [\App\Http\Controllers\TaskController::class, 'delete'])->name('deleteadm');
+    Route::get('/register',[\App\Http\Controllers\UserController::class, 'create'])->middleware('userAcces')->name('reg');
+    Route::post('/register',[\App\Http\Controllers\UserController::class, 'store'])->middleware('userAcces')->name('register');
+
+
 
 
 
@@ -57,7 +64,7 @@ Route::middleware(['auth'])->group(function (){
     Route::post('/addtask/previewtask/{id}/addsubtask', [\App\Http\Controllers\SubTaskController::class, 'store'])->name('addsubtask');
 
     Route::get('/addtask/previewtask/{id}/addsubtask', [\App\Http\Controllers\UserController::class, 'index']);
-//    Route::get('/addtask', [\App\Http\Controllers\SubTaskController::class, 'index']);
+
     Route::get('/detailtask/{idtask}', [\App\Http\Controllers\TaskController::class, 'show'])->name('detail');
     Route::get('/logout', [\App\Http\Controllers\SesiController::class, 'logout']);
 });
