@@ -207,11 +207,13 @@ class SubTaskController extends Controller
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
 
+        $user = User::find($user_id);
+
         $subtasks = Subtask::where('id_user', $user_id)
             ->whereBetween('created_at', [$start_date, $end_date])
             ->get();
 
-        return view('homeadmin.download.export', compact('subtasks'));
+        return view('homeadmin.download.export', compact('subtasks', 'user'));
     }
 
     public function delete($id){

@@ -6,9 +6,7 @@
             {{ session('created') }}
         </div>
     @endif
-
     <script>
-        // Remove the success message after 3 seconds
         setTimeout(function() {
             var successMessage = document.getElementById('created-message');
             if (successMessage) {
@@ -18,8 +16,8 @@
     </script>
 
     <h1 >Halo {{Auth::user()->name}} </h1>
-        <h2 class="mb-0">List Tugas</h2>
     <div class="d-flex align-items-center justify-content-between">
+        <h2 class="mb-0">List Tugas</h2>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaldownload">
             Download
         </button>
@@ -34,7 +32,6 @@
             {{ session('deleted') }}
         </div>
     @endif
-
     <script>
         // Remove the success message after 3 seconds
         setTimeout(function() {

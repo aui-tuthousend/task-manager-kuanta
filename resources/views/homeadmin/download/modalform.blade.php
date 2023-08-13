@@ -13,7 +13,9 @@
                         <label for="user_id">Select User:</label>
                         <select class="form-control" id="user_id" name="user_id" required>
                             @foreach ($users as $user)
+                                @if($user->role != 'admin')
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -26,7 +28,7 @@
                         <input type="datetime-local" class="form-control" id="end_date" name="end_date" required>
                     </div>
                     <br/>
-                    <button type="submit" class="btn btn-primary mt-2">Download Subtasks</button>
+                    <button type="submit" class="btn btn-primary mt-2">Get Subtasks</button>
                 </form>
             </div>
             </div>
