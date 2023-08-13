@@ -12,8 +12,8 @@
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.2",
         "livewire/livewire": "^2.12",
-        "maatwebsite/excel": "^1.1",
-        "nesbot/carbon": "^2.68"
+        "nesbot/carbon": "^2.68",
+        "psr/simple-cache": "2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

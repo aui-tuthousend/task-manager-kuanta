@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/register',[\App\Http\Controllers\UserController::class, 'create'])->middleware('userAcces')->name('reg');
     Route::post('/register',[\App\Http\Controllers\UserController::class, 'store'])->middleware('userAcces')->name('register');
     Route::get('/download', [\App\Http\Controllers\SubTaskController::class, 'download'])->middleware('userAcces')->name('download');
+    Route::get('/download/export', [\App\Http\Controllers\SubTaskController::class, 'export'])->middleware('userAcces')->name('export');
 
 
 

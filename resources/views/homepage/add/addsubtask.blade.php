@@ -34,14 +34,13 @@
         <x-forms.inputText name="judul" placeholder="Masukkan Judul SubTask" id="Form1"/>
 
         <label for="Form2">Deskripsi SubTask</label>
-{{--        <x-forms.inputText name="deskripsi" placeholder="Masukkan Deskripsi SubTask" id="Form2"/>--}}
 
         <div class="form-group">
-            <textarea class="form-control" id="Form2" name="deskripsi" rows="2"></textarea>
+            <textarea class="form-control" id="Form2" name="deskripsi" rows="2" required></textarea>
         </div>
         <label for="datepicker">Deadline</label>
         <br/>
-        <input type="datetime-local" name="deadline" id="datepicker">
+        <input type="datetime-local" name="deadline" id="datepicker" required>
 
         <br/>
         <br/>

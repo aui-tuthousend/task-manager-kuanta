@@ -16,15 +16,17 @@
     </script>
 
     <h1 >Halo {{Auth::user()->name}} </h1>
-    <div class="d-flex align-items-center justify-content-between">
-        <h2 class="mb-0">List Tugas</h2>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaldownload">
-            Download
-        </button>
-{{--        <a href='#' class="btn btn-primary" data-toggle="modal" data-target="#modaldownload">Download</a>--}}
-
-        <a href='/addtask' class="btn btn-primary">Add Task + </a>
-        <a href='/register' class="btn btn-primary">Register</a>
+    <div class="d-flex justify-content-between">
+        <div class="d-flex">
+            <h2 class="mb-0">List Tugas</h2>
+        </div>
+        <div class="d-flex flex-row-reverse ">
+            <a href='/addtask' class="btn btn-primary me-2">Add Task + </a>
+            <button type="button" class="btn btn-info me-2" data-toggle="modal" data-target="#modaldownload">
+                Download
+            </button>
+            <a href='/register' class="btn btn-warning me-2">Register</a>
+        </div>
     </div>
     <hr/>
     @if(session('deleted'))
@@ -87,7 +89,7 @@
                     <td class="align-middle"></td>
                     <td class="align-middle">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="{{route('detailadmin', $task->id)}}" class="btn btn-primary">details</a>
+                            <a href="{{route('detailadmin', $task->id)}}" class="btn btn-dark">details</a>
                         </div>
                     </td>
                 </tr>
@@ -104,6 +106,9 @@
     </div>
 
     @include('homeadmin.download.modalform')
+{{--    @php--}}
+{{--    phpinfo();--}}
+{{--@endphp--}}
 
 @endsection
 

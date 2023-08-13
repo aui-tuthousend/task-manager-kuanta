@@ -3,7 +3,7 @@
 <div class="container py-3">
 <div class="d-flex align-items-center justify-content-between">
     <h2 class="mb-0">List Tugas {{$user->name}}</h2>
-    <a href='#' class="btn btn-primary">Export</a>
+    <a href='{{route('export')}}' class="btn btn-primary">Export</a>
 </div>
 <hr/>
     <table class="table table-hover">

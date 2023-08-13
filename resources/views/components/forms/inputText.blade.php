@@ -8,5 +8,7 @@
            id="{{$id}}"
            type="{{$type}}"
            name="{{$name}}"
-           placeholder="{{$placeholder}}">
+           placeholder="{{$placeholder}}"
+           required
+    >
 </div>

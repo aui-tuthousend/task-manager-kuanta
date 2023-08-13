@@ -30,18 +30,18 @@
 
         <div class="form-group">
             <label for="Form1">Judul SubTask</label>
-            <input class="form-control" id="Form1" name="judul">
+            <input class="form-control" id="Form1" name="judul" required>
         </div>
 
 
         <div class="form-group">
             <label for="Form2">Deskripsi SubTask</label>
-            <textarea class="form-control" id="Form2" name="deskripsi" rows="2"></textarea>
+            <textarea class="form-control" id="Form2" name="deskripsi" rows="2" required></textarea>
         </div>
 
         <label for="datepicker">Deadline</label>
         <br/>
-        <input type="datetime-local" name="deadline" id="datepicker">
+        <input type="datetime-local" name="deadline" id="datepicker" required>
 
 
         <br/>

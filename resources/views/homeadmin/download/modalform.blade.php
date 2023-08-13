@@ -12,6 +12,7 @@
                     <div class="form-group">
                         <label for="user_id">Select User:</label>
                         <select class="form-control" id="user_id" name="user_id" required>
+                                <option>Select User</option>
                             @foreach ($users as $user)
                                 @if($user->role != 'admin')
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
