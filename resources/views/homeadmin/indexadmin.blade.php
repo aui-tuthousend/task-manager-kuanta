@@ -18,7 +18,7 @@
     <h1 >Halo {{Auth::user()->name}} </h1>
     <div class="d-flex justify-content-between">
         <div class="d-flex">
-            <h2 class="mb-0">List Tugas</h2>
+            <h2 class="mb-0">List Seluruh Tugas</h2>
         </div>
         <div class="d-flex flex-row-reverse ">
             <a href='/addtask' class="btn btn-primary me-2">Add Task + </a>

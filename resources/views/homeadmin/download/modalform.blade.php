@@ -15,7 +15,7 @@
                                 <option>Select User</option>
                             @foreach ($users as $user)
                                 @if($user->role != 'admin')
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                <option value="{{ $user->id }}">{{ $user->role }} - {{ $user->name }}</option>
                                 @endif
                             @endforeach
                         </select>
