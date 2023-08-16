@@ -20,7 +20,7 @@ class TaskController extends Controller
     }
 
     public function indexadmin(){
-        $tasks = Task::orderBy('created_at', 'DESC')->simplePaginate(5);
+        $tasks = Task::orderBy('created_at', 'DESC')->simplePaginate();
         $users = User::orderBy('role', 'ASC')->get();
 
         return view('homeadmin.indexadmin', compact('tasks', 'users'));

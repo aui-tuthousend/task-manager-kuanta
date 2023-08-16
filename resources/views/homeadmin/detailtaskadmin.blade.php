@@ -10,6 +10,7 @@
     <br/>
     <u>Seluruh SubTask</u>
     <table class="table">
+        <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"/>
         <thead class="table-primary">
         <tr>
             <th>id SubTask</th>

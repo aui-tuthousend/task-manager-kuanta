@@ -8,6 +8,9 @@
                 <li class="nav-item">
                     @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
                        <a class="nav-link active" href='/admin'>Home</a>
+                <li class="nav-item">
+                    <a class="nav-link active" href='/alluser'>Member</a>
+                </li>
                     @else
                         <a class="nav-link active" href='/team'>Home</a>
                     @endif
