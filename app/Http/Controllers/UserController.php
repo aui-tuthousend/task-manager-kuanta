@@ -32,15 +32,6 @@ class UserController extends Controller
         return view('homeadmin.viewuser',compact('users'));
     }
 
-    public function alluserData()
-    {
-        $users = User::orderBy('role', 'ASC')->get();
-
-        return response()->json(['data' => $users]);
-    }
-
-
-
     /**
      * Show the form for creating a new resource.
      */

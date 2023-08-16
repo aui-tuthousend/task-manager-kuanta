@@ -37,9 +37,6 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/admin',[\App\Http\Controllers\TaskController::class,'indexadmin'])->middleware('userAcces');
 
     Route::get('/alluser',[\App\Http\Controllers\UserController::class,'alluser']);
-//    Route::get('/alluser/data', [\App\Http\Controllers\UserController::class, 'alluserData'])->name('alluser.data');
-    Route::get('/alluser/data', [\App\Http\Controllers\UserController::class, 'alluserData'])->name('alluser.data');
-
 
     Route::get('/detailadmtask/{idtask}',[\App\Http\Controllers\TaskController::class, 'showadmin'])->name('detailadmin');
     Route::delete('/detailadmtask/{idtask}', [\App\Http\Controllers\TaskController::class, 'delete'])->name('deleteadm');
